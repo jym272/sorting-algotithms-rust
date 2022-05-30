@@ -1,40 +1,32 @@
 //Sort stable: equal values doesn't move
-// mod bubblesort;
-
+mod bubblesort;
+mod insertionsort;
+mod selectionsort;
+/// A trait that defines a function called sort that takes a mutable slice of T where T is Ord.
 trait Sorter {
-    fn sort<T>(slice: &mut [T])
+    fn sort<T>(&self, slice: &mut [T])
     where
         T: Ord;
 }
 
-fn sort<T, S>(slice: &mut [T])
-where
-    T: Ord,
-    S: Sorter,
-{
-    S::sort(slice);
-}
-
-
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
+
     struct StdSorter;
-    impl Sorter for StdSorter{
-        fn sort<T>(slice: &mut [T])
+    impl Sorter for StdSorter {
+        fn sort<T>(&self, slice: &mut [T])
         where
             T: Ord,
         {
             slice.sort();
         }
     }
-}
+
     #[test]
     fn std_works() {
         let mut v = vec![2, 1, 3, 1];
-        sort::<i32, StdSorter>(&mut v);
+        StdSorter.sort(&mut v);
         assert_eq!(v, vec![1, 1, 2, 3]);
     }
 }
