@@ -1,12 +1,14 @@
+use std::fmt::Display;
+
 //Sort stable: equal values doesn't move
 mod bubblesort;
 mod insertionsort;
+mod quicksort;
 mod selectionsort;
-/// A trait that defines a function called sort that takes a mutable slice of T where T is Ord.
 trait Sorter {
     fn sort<T>(&self, slice: &mut [T])
     where
-        T: Ord;
+        T: Ord + Display;
 }
 
 #[cfg(test)]

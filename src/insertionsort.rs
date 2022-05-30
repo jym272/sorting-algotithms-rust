@@ -46,13 +46,19 @@ fn insertion_sort() {
 #[test]
 fn insertion_sort_smart() {
     //vec of 42 items
-    let mut v = vec![12, 11, 13, 5, 6, 7, 71, 8, 9, 10, 1, 2, 3, 4, 0, 54];
+    let mut v = vec![
+        12, 11, 2, 11, 1, 15, 14, 86, 74, 36, 57, 14, 2, 21, 47, 89, 56, 32, 3, 4, 52, -2, 0, 54,
+        -5,
+    ];
     InsertionSort {
         with_binary_search: true,
     }
     .sort(&mut v);
     assert_eq!(
         v,
-        vec![0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 54, 71]
+        vec![
+            -5, -2, 0, 1, 2, 2, 3, 4, 11, 11, 12, 14, 14, 15, 21, 32, 36, 47, 52, 54, 56, 57, 74,
+            86, 89
+        ]
     );
 }
