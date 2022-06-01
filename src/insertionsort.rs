@@ -1,7 +1,7 @@
 use super::Sorter;
 
 pub struct InsertionSort {
-    with_binary_search: bool,
+    pub with_binary_search: bool,
 }
 
 /// Implementing the trait Sorter for the struct InsertionSort.

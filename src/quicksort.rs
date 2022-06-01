@@ -3,7 +3,7 @@ use std::fmt::Display;
 pub struct QuickSort;
 
 impl Sorter for QuickSort {
-    fn sort<T: Display>(&self, slice: &mut [T])
+    fn sort<T>(&self, slice: &mut [T])
     where
         T: Ord,
     {
@@ -20,19 +20,18 @@ impl Sorter for QuickSort {
                 let mut i = 0;
                 let mut j = len - 2;
                 while i < j {
-                    // dbg!(i, j);
+                    // dbg!(i, j); //it needs display in fn sort<T:Display>(&self, slice: &mut [T])cd
                     //slice to string transfor
-                    let _ = slice.iter().map(|x| x.to_string()).collect::<Vec<String>>();
+                    // let slice_to_string = slice.iter().map(|x| x.to_string()).collect::<Vec<String>>();
                     // dbg!(slice_to_string);
                     if slice[i] > slice[pivot] && slice[j] < slice[pivot] {
                         slice.swap(i, j);
-                    } else {
-                        if slice[i] <= slice[pivot] {
-                            i += 1;
-                        }
-                        if slice[j] >= slice[pivot] {
-                            j -= 1;
-                        }
+                    }
+                    if slice[i] <= slice[pivot] {
+                        i += 1;
+                    }
+                    if slice[j] >= slice[pivot] {
+                        j -= 1;
                     }
                 }
 
@@ -58,7 +57,7 @@ impl Sorter for QuickSort {
 fn quick_sort() {
     let mut v = vec![
         12, 11, 2, 11, 1, 15, 14, 86, 74, 36, 57, 14, 2, 21, 47, 89, 56, 32, 3, 4, 52, -2, 0, 54,
-        -5,
+        -5, 200,
     ];
 
     QuickSort.sort(&mut v);
@@ -66,7 +65,7 @@ fn quick_sort() {
         v,
         vec![
             -5, -2, 0, 1, 2, 2, 3, 4, 11, 11, 12, 14, 14, 15, 21, 32, 36, 47, 52, 54, 56, 57, 74,
-            86, 89
+            86, 89, 200
         ]
     );
 }
