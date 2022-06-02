@@ -17,19 +17,19 @@ pub trait Sorter {
         T: Ord;
 }
 
+pub struct StdSorter;
+impl Sorter for StdSorter {
+    fn sort<T>(&self, slice: &mut [T])
+    where
+        T: Ord,
+    {
+        slice.sort();
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    struct StdSorter;
-    impl Sorter for StdSorter {
-        fn sort<T>(&self, slice: &mut [T])
-        where
-            T: Ord,
-        {
-            slice.sort();
-        }
-    }
 
     #[test]
     fn std_works() {
